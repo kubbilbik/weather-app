@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+//https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
+
+import axios from "axios";
+import { useState } from "react";
 
 function App() {
-  return (
+  const [weather, setWeather] = useState();
+  const getWearherData = async (lat , lon ) =>{
+    const key = process.env.API_KEY;
+    const { data } = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`);
+    setWeather(data);
+  }  
+ 
+    return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      hello
     </div>
   );
 }
